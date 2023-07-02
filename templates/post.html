@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="row" style="margin-top: 10px;">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                .json pushed to DB
+            </div>
+            <div class="card-body">
+                <pre>{{ json_data }}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                Last 5 entries DB
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    <table class="table" style="overflow-x: scroll;">
+                        <!-- table header -->
+                        {% if records %}
+                        <tr>
+                           {% for key in records[0] %}
+                           <th> {{ key }} </th>
+                           {% endfor %}
+                        </tr>
+                        {% endif %}
+                    
+                        <!-- table rows -->
+                        {% for dict_item in records %}
+                        <tr>
+                           {% for value in dict_item.values() %}
+                           <td> {{ value }} </td>
+                           {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+{% endblock %}

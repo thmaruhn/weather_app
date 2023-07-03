@@ -2,6 +2,11 @@
 
 Weather app that uses an [API](https://www.visualcrossing.com/weather-data-editions) to get weather information and pushes the results to a BigQuery DB
 
+<p float="left">
+  <img src="./Screenshot_Main.png" width="40%" />
+  <img src="./Screenshot_Results.png" width="40%" /> 
+</p>
+
 ## Input parameters 
 
 | Parameter   | Label | Format     |   Note|
@@ -10,15 +15,15 @@ Weather app that uses an [API](https://www.visualcrossing.com/weather-data-editi
 |`END_DATE`|  From date | `string`| select date from calendar|
 |`LOCATION`| To date | `string`| If location not found, error message should appear|
 |`API_KEY`| API Key| `string`| API key generated from free account at Visualcrossing |
-|`GOOGLE_APPLICATION_CREDENTIALS_PATH`| Google Application Credentials Path | `string`| default set to currently used DB|
-|`BIG_QUERY_TARGET_ID`| BigQuery Target ID | `string (Format: “PROJECT.DATASET.TABLE”)`| upload .json file with authentification information|
+|`GOOGLE_APPLICATION_CREDENTIALS_PATH`| Google Application Credentials Path | `string/.json`| upload .json file with authentification |
+|`BIG_QUERY_TARGET_ID`| BigQuery Target ID | `string (Format: “PROJECT.DATASET.TABLE”)`| Format: 'PROJECT.DATASET.TABLE' |
 
 ## Output
 
-After successful entry of input, the date sent should appear as .json. In addition, last 5 entries of DB are shown, based on runtime of service call in timezone of the
-requested location
+After successful entry of input, the data sent should appear as .json. In addition, last 5 entries of DB are shown, based on runtime of service call in timezone of the
+requested location.
 
-The following .json is send to the BigQueryDB
+The following .json is send to the BigQueryDB:
 
 ```json
 {

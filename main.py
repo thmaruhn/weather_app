@@ -19,8 +19,8 @@ app.config['SECRET_KEY'] = secrets.token_hex()
 def send():
 
     form = SearchForm()
+    if request.method == 'POST':
 
-    if form.validate_on_submit():
         LOCATION = form.LOCATION.data
         START_DATE = form.START_DATE.data
         END_DATE = form.END_DATE.data
@@ -34,7 +34,7 @@ def send():
 
         if response.status_code != 200:
             return render_template('main.html', form=form, error='Please check data entries')
-        
+
         # upload valid entry inot BigQuery DB
         data = response.json()
 
